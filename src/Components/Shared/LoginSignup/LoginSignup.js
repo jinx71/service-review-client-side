@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../Login/Login';
-import Signup from './Signup/Signup';
+import Signup from '../Signup/Signup';
 
 const LoginSignup = () => {
     return (
