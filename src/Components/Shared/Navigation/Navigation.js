@@ -38,7 +38,7 @@ const Navigation = () => {
 
                 <p className=" normal-case text-5xl heading">Travel With Me </p>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <Link to="/home" className='mr-4 btn btn-ghost'>Home</Link>
                     <li tabIndex={0}>

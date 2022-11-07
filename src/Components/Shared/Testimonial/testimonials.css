@@ -1,0 +1,12 @@
+.testimonials {
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.testimonials::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial {
+    flex: 0 0 50%;
+}
