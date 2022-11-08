@@ -1,19 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import ServicesCard from './ServicesCard';
 
 const Services = () => {
+    const services = useLoaderData()
+    const handleClick = (id) => {
 
-    const card = <><div className="card lg:card-side border shadow-xl">
-        <figure><img src="https://placeimg.com/400/400/arch" alt="Album" /></figure>
-        <div className="card-body">
-            <h2 className="card-title">New album is released!</h2>
-            <p>Click the button to listen on Spotiwhy app.</p>
-            <div className="card-actions justify-end">
-                <button className="btn btn-primary">Listen</button>
-            </div>
-        </div>
-    </div>
-    </>
+    }
+    // console.log(services)
     return (
         <div>
             <div className="mt-20 w-3/4 mx-auto">
@@ -24,7 +18,7 @@ const Services = () => {
             </div>
             <div className='grid gap-5 cols-1 px-2 md:px-0 md:grid-cols-2 lg:grid-cols-2 container mx-auto mt-20'>
                 {
-                    [...Array(10).keys()].map(a => card)
+                    services.map(service => <ServicesCard service={service} handleClick={handleClick}></ServicesCard>)
                 }
             </div>
             <div className="flex justify-center mt-20">
