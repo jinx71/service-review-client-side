@@ -4,11 +4,12 @@ import Blog from '../Components/Pages/Blog/Blog';
 import Home from '../Components/Pages/Home/Home';
 import Login from '../Components/Pages/LoginPage/LoginPage';
 import NotFound from '../Components/Pages/NotFound/NotFound';
-import Services from '../Components/Pages/Services/Services';
+import ServicesPage from '../Components/Pages/ServicesPage/ServicesPage';
 import SignupPage from '../Components/Pages/SignupPage/SignupPage';
 import ServiceDetails from '../Components/Shared/ServiceDetails/ServiceDetails';
 
 import Main from '../Layout/Main';
+import ServiceLayout from '../Layout/ServiceLayout';
 
 export const router = createBrowserRouter([
     {
@@ -27,17 +28,6 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch('http://localhost:3001/')
             },
             {
-                path: "/services",
-                element: <Services></Services>,
-                loader: ({ params }) => fetch('http://localhost:3001/services')
-            },
-            {
-                path: "/services/:id",
-                element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:3001/services/${params.id}`)
-
-            },
-            {
                 path: "/blog",
                 element: <Blog></Blog>
             },
@@ -49,6 +39,23 @@ export const router = createBrowserRouter([
                 path: "/signup",
                 element: <SignupPage></SignupPage>
             },
+        ]
+    },
+    {
+        path: "/services",
+        element: <ServiceLayout></ServiceLayout>,
+        loader: ({ params }) => fetch('http://localhost:3001/services'),
+        children: [
+            {
+                path: "/services",
+                element: <ServicesPage></ServicesPage>,
+                loader: ({ params }) => fetch('http://localhost:3001/services'),
+            },
+            {
+                path: "/services/:id",
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:3001/services/${params.id}`),
+            }
         ]
     },
     {

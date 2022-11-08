@@ -1,0 +1,22 @@
+.bannerImage {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 10px;
+}
+
+.gradient {
+    width: 100%;
+    overflow-x: hidden;
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(131, 126, 250, 0.548), rgba(253, 123, 83, 0.485));
+}
+
+.serviceHeading {
+    font-family: 'Satisfy', cursive;
+}
