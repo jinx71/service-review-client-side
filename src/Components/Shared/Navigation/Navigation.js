@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import ToggleTheme from '../ToggleTheme/ToggleTheme';
 import logo from '../../../Asset/favicon.ico'
 import './Navigation.css'
+import { AuthContext } from '../../../Context/UserContext';
 const Navigation = () => {
-    // const { user, signout } = useContext(AuthContext)
+    const { user, signout } = useContext(AuthContext)
+    console.log(signout)
 
     return (
         <div className="navbar bg-white dark:bg-black text-black dark:text-white">
@@ -15,20 +17,16 @@ const Navigation = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white dark:bg-black text-black dark:text-white rounded-box w-52  border border-2">
                         <Link to="/home" className='mt-2 w-100 btn btn-ghost'>Home</Link>
-                        <li tabIndex={0}>
-                            <Link to="/Services" className='btn btn-ghost'>
-                                Services
-                                {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg> */}
-                            </Link>
-                            {/* <ul className="p-2 border border-2 w-52 ml-2">
-                                <Link to="/Services/1" className='btn btn-ghost'>Php Tutorial</Link>
-                                <Link to="/Services/2" className='btn btn-ghost'>React Tutorial</Link>
-                            </ul> */}
-                        </li>
+
+                        <Link to="/Services" className='btn btn-ghost'>
+                            Services
+                        </Link>
+
                         <Link to="/home" className='btn btn-ghost'>Blog</Link>
-                        {/* <Link to="/faq" className='btn btn-ghost'>FAQ</Link> */}
+                        {user && user.uid ? <Link className="btn btn-ghost" to="/my-reviews">My Reviews</Link> : null}
+                        {user && user.uid ? <Link className="btn btn-ghost" to="/add-service">Add Service</Link> : null}
                         {
-                            false ? <Link className="btn btn-ghost">Logout</Link> :
+                            user && user.uid ? <Link className="btn btn-ghost" onClick={signout}>Logout</Link> :
                                 <Link to="/login" className="btn btn-ghost">Login</Link>
                         }
 
@@ -53,8 +51,11 @@ const Navigation = () => {
                     </li>
                     <Link to="/blog" className='mr-4 btn btn-ghost'>Blog</Link>
                     {/* <Link to="/faq" className='mr-4 btn btn-ghost'>FAQ</Link> */}
+                    {user && user.uid ? <Link className="btn btn-ghost" to="/my-reviews">My Reviews</Link> : null}
+                    {user && user.uid ? <Link className="btn btn-ghost" to="/add-service">Add Service</Link> : null}
+
                     {
-                        false ? <Link className="btn btn-ghost">Logout</Link> :
+                        user && user.uid ? <Link className="btn btn-ghost" onClick={signout}>Logout</Link> :
                             <Link to="/login" className="btn btn-ghost">Login</Link>
                     }
                     <Link to="/signup" className='mr-4 btn btn-ghost'>Signup</Link>
@@ -62,7 +63,7 @@ const Navigation = () => {
             </div>
             <div className="navbar-end">
                 {
-                    false ? <div title="{user.displayName}"><img src="" alt="" style={{ width: '25px', height: '25px' }} /></div> : null
+                    user && user.uid ? <div title={user?.displayName}><img src={user?.photoURL} alt="" style={{ width: '25px', height: '25px' }} /></div> : null
                 }
 
                 <div className="">
