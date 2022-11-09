@@ -18,9 +18,9 @@ const ReviewCard = ({ review }) => {
                             <div className="card-title text-black">{review?.displayName}</div>
                         </div>
                         <div className='flex flex-col justify-center items-center'>
-                            <span>Rating : {review?.personalRating}</span>
+                            <span>Rating : {parseInt(review?.personalRating)}</span>
                             <Ratings
-                                rating={review?.personalRating}
+                                rating={parseInt(review?.personalRating)}
                                 widgetRatedColors="orange"
                                 widgetSpacings='0px'
                             >

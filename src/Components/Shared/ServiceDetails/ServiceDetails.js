@@ -1,14 +1,60 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext';
 import Gallary from '../Gallary/Gallary';
 import ReviewCard from '../ReviewCard/ReviewCard';
+import toast, { Toaster } from 'react-hot-toast';
 import './serviceDetails.css'
 const ServiceDetails = () => {
-    const serviceDetails = useLoaderData()
+    const abc = useLoaderData()
+    const [serviceDetails, setServiceDetails] = useState(abc)
+    // console.log(abc);
+
+    // setServiceDetails(12)
+    console.log(serviceDetails)
+    const [reload, setReload] = useState(false)
     const { user } = useContext(AuthContext);
+    // console.log(user)
     const { review } = serviceDetails
-    console.log(serviceDetails.review)
+    // console.log(serviceDetails.review)
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const reviewObject = {}
+        reviewObject["profileImage"] = user.photoURL
+        reviewObject["displayName"] = user.displayName
+        reviewObject["email"] = user.email
+        reviewObject["personalRating"] = event.target.rating.value
+        reviewObject["reviewDetails"] = event.target.review.value
+        reviewObject["_id"] = serviceDetails._id
+        console.log(reviewObject)
+        fetch('http://localhost:3001/add-review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviewObject)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data) {
+                    setReload(true)
+                    toast.success("Review Added Successfully")
+                }
+                else {
+                    setReload(false)
+                    toast.error("Failure : Review addition failure")
+                }
+            }
+            )
+    }
+    useEffect(() => {
+        fetch(`http://localhost:3001/services/${serviceDetails._id}`)
+            .then(res => res.json())
+            .then(data => {
+                setServiceDetails(data)
+            })
+    }, [reload, serviceDetails._id, setServiceDetails])
     return (
         <div className='col-span-1 md:col-span-2 lg:col-span-4 mt-20'>
 
@@ -90,18 +136,33 @@ const ServiceDetails = () => {
                     </div>
 
                 }
-                <label className="label">
-                    <span className="label-text text-xl">Your Review</span>
-                    {/* <span className="label-text-alt">Alt label</span> */}
-                </label>
-                <textarea className="textarea textarea-bordered h-24" placeholder="Add Something"></textarea>
-                <div className="form-control mt-2">
-                    <button className="btn btn-primary">Add Review</button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <label className="label">
+                        <span className="label-text text-xl">Your Review</span>
+                        {/* <span className="label-text-alt">Alt label</span> */}
+                    </label>
+                    <div className="form-control flex flex-row justify-start items-center">
+                        <label className="label">
+                            <span className="label-text text-xl">Rating</span>
+                        </label>
+                        <input type="number" name="rating" placeholder="Rating" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-xl">Review</span>
+                        </label>
+                        <textarea name="review" className="textarea textarea-bordered h-24" placeholder="Add Something"></textarea>
+                    </div>
+
+                    <div className="form-control mt-2">
+                        <button className="btn btn-primary">Add Review</button>
+                    </div>
+                </form>
             </div>
             {
                 review.map(a => <ReviewCard review={a}></ReviewCard>)
             }
+            {/* <Toaster /> */}
         </div>
     );
 };
