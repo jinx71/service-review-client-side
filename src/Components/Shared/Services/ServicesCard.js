@@ -20,7 +20,7 @@ const ServicesCard = ({ service, handleClick }) => {
             total = total + parseInt(key) * parseInt(rating[key]);
             totalReviews = totalReviews + parseInt(rating[key])
         }
-        return (total / totalReviews)
+        return ((total / totalReviews) ? (total / totalReviews) : 0)
     }
     return (
         <div>

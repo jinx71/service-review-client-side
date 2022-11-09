@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Context/UserContext';
-
+import toast, { Toaster } from 'react-hot-toast';
 const AddService = () => {
-    const { serviceLength } = useContext(AuthContext)
 
+    const { serverStatus, setServerStatus } = useContext(AuthContext);
     const handleAddServiceSubmit = (event) => {
         event.preventDefault()
 
@@ -12,7 +12,7 @@ const AddService = () => {
         service["price"] = event.target.price.value;
         service["image"] = event.target.image.value;
         service["video"] = event.target.video.value;
-        service["gallaryImage"] = [
+        service["galaryImage"] = [
             {
                 "src": event.target.gImage1.value,
                 "width": 4,
@@ -42,7 +42,7 @@ const AddService = () => {
         service["Description_One"] = event.target.descriptionOne.value;
         service["Description_Two"] = event.target.descriptionTwo.value;
         service["Description_Three"] = event.target.descriptionThree.value;
-        service["review"] = {
+        service["rating"] = {
             "5": 0,
             "4": 0,
             "3": 0,
@@ -50,6 +50,7 @@ const AddService = () => {
             "1": 0,
             "0": 0
         }
+        service["id"] = 700
         service["feature"] = [
             {
                 "title": event.target.f1Title.value,
@@ -71,13 +72,36 @@ const AddService = () => {
         console.log(service)
 
 
+
+        fetch('http://localhost:3001/add-service', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(service)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    toast.success("Service Added Successfully")
+                }
+                else {
+                    toast.error("Failure : Service addition failure")
+                }
+            }
+            )
+
     }
+
     return (
         <div className="">
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Add A Service</h1>
                     {/* <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
+                    <div>
+                        <div><Toaster /></div>
+                    </div>
                 </div>
 
                 <div className="card border w-full shadow-2xl dark:bg-gray-800">
@@ -119,31 +143,31 @@ const AddService = () => {
                                     <label className="label">
                                         <span className="label-text">Gallary Image 1</span>
                                     </label>
-                                    <input type="text" name="gImage1" placeholder="email" className="input input-bordered" />
+                                    <input type="text" name="gImage1" placeholder="Gallary Images URL" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Gallary Image 2</span>
                                     </label>
-                                    <input type="text" name="gImage2" placeholder="email" className="input input-bordered" />
+                                    <input type="text" name="gImage2" placeholder="Gallary Images URL" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Gallary Image 3</span>
                                     </label>
-                                    <input type="text" name="gImage3" placeholder="email" className="input input-bordered" />
+                                    <input type="text" name="gImage3" placeholder="Gallary Images URL" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Gallary Image 4</span>
                                     </label>
-                                    <input type="text" name="gImage4" placeholder="email" className="input input-bordered" />
+                                    <input type="text" name="gImage4" placeholder="Gallary Images URL" className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Gallary Image 5</span>
                                     </label>
-                                    <input type="text" name="gImage5" placeholder="email" className="input input-bordered" />
+                                    <input type="text" name="gImage5" placeholder="Gallary Images URL" className="input input-bordered" />
                                 </div>
                             </div>
 

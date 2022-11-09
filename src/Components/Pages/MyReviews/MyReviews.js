@@ -1,9 +1,10 @@
 import React from 'react';
+import ReviewCard from '../../Shared/ReviewCard/ReviewCard';
 
 const MyReviews = () => {
     return (
         <div>
-            This is my reviews
+            <ReviewCard></ReviewCard>
         </div>
     );
 };
