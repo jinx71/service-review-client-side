@@ -74,7 +74,7 @@ const AddService = () => {
 
 
 
-        fetch('http://localhost:3001/add-service', {
+        fetch('https://travel-guide-server-jinx71.vercel.app/add-service', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

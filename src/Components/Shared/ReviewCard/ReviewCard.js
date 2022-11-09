@@ -12,7 +12,7 @@ const ReviewCard = ({ review }) => {
     const [reload, setReload] = useState(false)
     const handleDelete = () => {
         // console.log("deleted")
-        fetch('http://localhost:3001/delete-review', {
+        fetch('https://travel-guide-server-jinx71.vercel.app/delete-review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

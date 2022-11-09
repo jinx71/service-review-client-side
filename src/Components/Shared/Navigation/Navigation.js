@@ -16,7 +16,7 @@ const Navigation = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white dark:bg-black text-black dark:text-white rounded-box w-52  border border-2">
-                        <Link to="/home" className='mt-2 w-100 btn btn-ghost'>Home</Link>
+                        <Link to="/home" className='btn btn-ghost'>Home</Link>
 
                         <Link to="/Services" className='btn btn-ghost'>
                             Services

@@ -28,7 +28,7 @@ const ServiceDetails = () => {
         reviewObject["_id"] = serviceDetails._id
         reviewObject["serviceName"] = serviceDetails.serviceName
         console.log(reviewObject)
-        fetch('http://localhost:3001/add-review', {
+        fetch('https://travel-guide-server-jinx71.vercel.app/add-review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const ServiceDetails = () => {
             )
     }
     useEffect(() => {
-        fetch(`http://localhost:3001/services/${serviceDetails._id}`)
+        fetch(`https://travel-guide-server-jinx71.vercel.app/services/${serviceDetails._id}`)
             .then(res => res.json())
             .then(data => {
                 setServiceDetails(data)
@@ -161,7 +161,7 @@ const ServiceDetails = () => {
                 </form>
             </div>
             {
-                review.sort(function (a, b) { return new Date(b.date) - new Date(a.date) }).map(a => <ReviewCard review={a}></ReviewCard>)
+                review?.sort(function (a, b) { return new Date(b.date) - new Date(a.date) }).map(a => <ReviewCard review={a}></ReviewCard>)
             }
             {/* <Toaster /> */}
         </div>

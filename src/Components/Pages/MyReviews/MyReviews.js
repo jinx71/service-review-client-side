@@ -21,7 +21,7 @@ const MyReviews = () => {
 
                 {
 
-                    userReviews.map(review => review.email === user.email ? <ReviewCard review={review}></ReviewCard> : null)
+                    userReviews.map(review => review?.email === user?.email ? <ReviewCard review={review}></ReviewCard> : null)
 
                 }
             </div>

@@ -23,12 +23,12 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: ({ params }) => fetch('http://localhost:3001/')
+                loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/')
             },
             {
                 path: "/home",
                 element: <Home></Home>,
-                loader: ({ params }) => fetch('http://localhost:3001/')
+                loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/')
             },
             {
                 path: "/blog",
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
             {
                 path: "/my-reviews",
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
-                loader: ({ params }) => fetch('http://localhost:3001/services')
+                loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/services')
             },
             {
                 path: "/add-service",
@@ -57,17 +57,17 @@ export const router = createBrowserRouter([
     {
         path: "/services",
         element: <ServiceLayout></ServiceLayout>,
-        loader: ({ params }) => fetch('http://localhost:3001/services'),
+        loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/services'),
         children: [
             {
                 path: "/services",
                 element: <ServicesPage></ServicesPage>,
-                loader: ({ params }) => fetch('http://localhost:3001/services'),
+                loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/services'),
             },
             {
                 path: "/services/:id",
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:3001/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://travel-guide-server-jinx71.vercel.app/services/${params.id}`),
             }
         ]
     },

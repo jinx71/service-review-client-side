@@ -6,11 +6,14 @@ import Header from '../Components/Shared/Header/Header';
 
 const Main = () => {
     return (
-        <Background>
-            <Header></Header>
-            <Outlet></Outlet>
+        <>
+            <Background>
+                <Header></Header>
+                <Outlet></Outlet>
+
+            </Background>
             <Footer></Footer>
-        </Background>
+        </>
     );
 };
 

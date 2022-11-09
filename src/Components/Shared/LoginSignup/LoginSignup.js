@@ -8,7 +8,7 @@ const LoginSignup = () => {
             <div className="mt-20">
                 <div className="divider text-5xl">*****</div>
                 <div className='text-center text-5xl uppercase '>Join Now</div>
-                <p className='text-center p-5 text-lg w-1/2 mx-auto'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio dolorem obcaecati perferendis, illo consequuntur omnis! Accusantium ipsam adipisci ipsum sapiente consectetur vitae qui.</p>
+                <p className='text-center p-5 text-lg w-1/2 mx-auto'>Join with us! We will be bounded to give you premium service with comfortable budget.</p>
                 <div className="divider text-5xl">*****</div>
             </div>
             <div class="flex flex-col w-full lg:flex-row">
