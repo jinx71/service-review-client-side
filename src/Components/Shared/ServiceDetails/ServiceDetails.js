@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Gallary from '../Gallary/Gallary';
+import ReviewCard from '../ReviewCard/ReviewCard';
 
 const ServiceDetails = () => {
     const serviceDetails = useLoaderData()
@@ -65,6 +66,23 @@ const ServiceDetails = () => {
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
+            <div className='mt-5 text-lg text-left'>
+                <h1 className='text-5xl my-5'>Add a review</h1>
+                {/* <p>{serviceDetails?.Description_Three}</p> */}
+            </div>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Your Review</span>
+                    {/* <span className="label-text-alt">Alt label</span> */}
+                </label>
+                <textarea className="textarea textarea-bordered h-24" placeholder="Add Something"></textarea>
+                <div className="form-control mt-2">
+                    <button className="btn btn-primary">Add Review</button>
+                </div>
+            </div>
+            {
+                [...Array(7).keys()].map(a => <ReviewCard></ReviewCard>)
+            }
         </div>
     );
 };

@@ -7,7 +7,7 @@ const ReviewCard = () => {
     // console.log(user)
     return (
         <div>
-            <div className="card border w-3/4 mx-auto mt-10 shadow-xl">
+            <div className="card border mx-auto mt-10 shadow-xl">
 
                 <div className="card-body">
                     <div className="flex justify-between items-center">
