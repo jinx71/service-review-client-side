@@ -14,7 +14,7 @@ const ServiceLayout = () => {
     return (
         <Background>
             <Header></Header>
-            <div className='container p-2'>
+            <div className='container p-2 w-full mx-auto'>
                 {
                     location.pathname.split('/').length === 2 ? <ServiceDetailsBanner image={image} title={'Services...'}></ServiceDetailsBanner>
                         :
@@ -25,7 +25,7 @@ const ServiceLayout = () => {
                             : null
                 }
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-5'>
+            <div className='container w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5'>
                 <Outlet></Outlet>
                 <ServiceSidebar></ServiceSidebar>
             </div>
