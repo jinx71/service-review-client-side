@@ -26,6 +26,7 @@ const ServiceDetails = () => {
         reviewObject["personalRating"] = event.target.rating.value
         reviewObject["reviewDetails"] = event.target.review.value
         reviewObject["_id"] = serviceDetails._id
+        reviewObject["serviceName"] = serviceDetails.serviceName
         console.log(reviewObject)
         fetch('http://localhost:3001/add-review', {
             method: 'POST',
