@@ -161,7 +161,7 @@ const ServiceDetails = () => {
                 </form>
             </div>
             {
-                review.map(a => <ReviewCard review={a}></ReviewCard>)
+                review.sort(function (a, b) { return new Date(b.date) - new Date(a.date) }).map(a => <ReviewCard review={a}></ReviewCard>)
             }
             {/* <Toaster /> */}
         </div>

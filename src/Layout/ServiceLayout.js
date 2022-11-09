@@ -8,7 +8,7 @@ import ServiceSidebar from '../Components/Shared/ServiceSidebar/ServiceSidebar';
 import image from '../Asset/Banner.webp';
 const ServiceLayout = () => {
     const serviceDetails = useLoaderData()
-    console.log(serviceDetails)
+    // console.log(serviceDetails)
     const location = useLocation()
     console.log(location)
     return (

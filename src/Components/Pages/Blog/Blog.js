@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Blog = () => {
+    useEffect(() => {
+        document.title = `Blog : ${document.title}`;
+    });
     return (
         <div>
             <div className="card border w-3/4 mx-auto mt-20 shadow-xl">

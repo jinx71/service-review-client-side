@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/UserContext';
 import ReviewCard from '../../Shared/ReviewCard/ReviewCard';
 
 const MyReviews = () => {
-
+    useEffect(() => {
+        document.title = `My Reviews : ${document.title}`;
+    });
     const services = useLoaderData()
     const { user } = useContext(AuthContext)
     // console.log(user.email)

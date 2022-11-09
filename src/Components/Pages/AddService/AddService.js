@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Context/UserContext';
 import toast, { Toaster } from 'react-hot-toast';
 const AddService = () => {
-
+    useEffect(() => {
+        document.title = `Add Service : ${document.title}`;
+    });
     const { serverStatus, setServerStatus } = useContext(AuthContext);
     const handleAddServiceSubmit = (event) => {
         event.preventDefault()
-
         const service = {}
         service["serviceName"] = event.target.serviceName.value;
         service["price"] = event.target.price.value;

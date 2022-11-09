@@ -43,10 +43,13 @@ const ReviewCard = ({ review }) => {
                             <div className="card-body">
                                 <div className="flex justify-between items-center">
                                     <div className="flex gap-5">
+
+
                                         <div>
                                             <div title={reviewDetails?.displayName} className="rounded-full"><img src={reviewDetails?.profileImage} alt="" style={{ width: '100px', height: '100px' }} /></div>
                                         </div>
-                                        <div className="card-title text-black">{reviewDetails?.displayName} <br></br>{reviewDetails?.serviceName ? reviewDetails?.serviceName : null}</div>
+                                        <div className="card-title text-black">
+                                            {reviewDetails?.date}<br></br>{reviewDetails?.displayName} <br></br>{reviewDetails?.serviceName ? reviewDetails?.serviceName : null}</div>
                                     </div>
                                     <div className='flex flex-col justify-center items-center'>
                                         <span>Rating : {parseInt(reviewDetails?.personalRating)}</span>
