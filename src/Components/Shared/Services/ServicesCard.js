@@ -46,7 +46,7 @@ const ServicesCard = ({ service, handleClick }) => {
                             <Ratings.Widget widgetDimension="18px" />
                             <Ratings.Widget widgetDimension="18px" />
                         </Ratings>
-                        <Link to={`/services/${service.id}`} className="btn btn-primary" onClick={() => handleClick(service.id)}>View Details</Link>
+                        <Link to={`/services/${service._id}`} className="btn btn-primary">View Details</Link>
 
                     </div>
                 </div>

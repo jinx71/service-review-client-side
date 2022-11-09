@@ -19,7 +19,7 @@ const ServiceLayout = () => {
                     location.pathname.split('/').length === 2 ? <ServiceDetailsBanner image={image} title={'Services...'}></ServiceDetailsBanner>
                         :
                         location.pathname.split('/').length === 3 ?
-                            <ServiceDetailsBanner image={serviceDetails.find(service => service.id == location.pathname.split('/')[2]).image} title={serviceDetails.find(service => service.id == location.pathname.split('/')[2]).serviceName}></ServiceDetailsBanner>
+                            <ServiceDetailsBanner image={serviceDetails.find(service => service._id == location.pathname.split('/')[2]).image} title={serviceDetails.find(service => service._id == location.pathname.split('/')[2]).serviceName}></ServiceDetailsBanner>
 
 
                             : null

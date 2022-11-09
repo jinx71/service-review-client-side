@@ -4,7 +4,7 @@ import Gallary from '../Gallary/Gallary';
 
 const ServiceDetails = () => {
     const serviceDetails = useLoaderData()
-    // console.log(serviceDetails)
+    console.log(serviceDetails)
     return (
         <div className='col-span-1 md:col-span-2 lg:col-span-4 mt-20'>
 
@@ -47,6 +47,18 @@ const ServiceDetails = () => {
             <div className='mt-5 text-lg text-left'>
                 <h1 className='text-5xl my-5'>Make a booking NOW!</h1>
                 <p>{serviceDetails.Description_Three}</p>
+            </div>
+            <div mt-5>
+                <div className="card border shadow-xl image-full">
+                    <figure><img src={serviceDetails.image} alt="Shoes" /></figure>
+                    <div className="card-body flex justify-center items-center">
+                        <h2 className="card-title text-5xl text-center ">All these includes Only At BDT{serviceDetails.price}</h2>
+
+                        <div className="card-actions justify-end">
+                            <button className="btn btn-lg btn-primary">Book Now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="mt-5">
                 <iframe className='w-full' height="400" src={serviceDetails.video}
