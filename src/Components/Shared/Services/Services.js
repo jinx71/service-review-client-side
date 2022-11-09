@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Context/UserContext';
 import ServicesCard from './ServicesCard';
 
 
 const Services = () => {
     const services = useLoaderData()
-
+    const { setServiceLength } = useContext(AuthContext)
+    setServiceLength(services.length)
     // console.log(services)
     return (
         <div>
