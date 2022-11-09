@@ -5,6 +5,7 @@ import './serviceCard.css'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 const ServicesCard = ({ service, handleClick }) => {
+    console.log(service._id)
     const trim = (abc) => {
         if (abc.length > 100) {
             return abc.substring(0, 99) + "..."

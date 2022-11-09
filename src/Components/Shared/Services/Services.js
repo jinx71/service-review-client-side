@@ -8,7 +8,7 @@ const Services = () => {
     const services = useLoaderData()
     const { setServiceLength } = useContext(AuthContext)
     setServiceLength(services.length)
-    // console.log(services)
+
     return (
         <div>
             <div className="mt-20 w-3/4 mx-auto">

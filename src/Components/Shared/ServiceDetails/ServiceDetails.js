@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Context/UserContext';
 import Gallary from '../Gallary/Gallary';
 import ReviewCard from '../ReviewCard/ReviewCard';
-
+import './serviceDetails.css'
 const ServiceDetails = () => {
     const serviceDetails = useLoaderData()
-    console.log(serviceDetails)
+    const { user } = useContext(AuthContext);
+    const { review } = serviceDetails
+    console.log(serviceDetails.review)
     return (
         <div className='col-span-1 md:col-span-2 lg:col-span-4 mt-20'>
 
@@ -70,9 +73,25 @@ const ServiceDetails = () => {
                 <h1 className='text-5xl my-5'>Add a review</h1>
                 {/* <p>{serviceDetails?.Description_Three}</p> */}
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
+                {
+
+                    user && user.uid ? null : <div className='absolute overlay'>
+                        <div className="card  bg-transparent text-neutral-content">
+                            <div className="card-body items-center text-center">
+                                <h2 className="card-title text-5xl">Login To Add A Review</h2>
+                                <p>You are here for a reason.</p>
+                                <div className="card-actions justify-end">
+                                    <Link to='/login' className="btn btn-primary">Login</Link>
+                                    <Link to='/signup' className="btn btn-ghost">Signup</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
                 <label className="label">
-                    <span className="label-text">Your Review</span>
+                    <span className="label-text text-xl">Your Review</span>
                     {/* <span className="label-text-alt">Alt label</span> */}
                 </label>
                 <textarea className="textarea textarea-bordered h-24" placeholder="Add Something"></textarea>
@@ -81,7 +100,7 @@ const ServiceDetails = () => {
                 </div>
             </div>
             {
-                [...Array(7).keys()].map(a => <ReviewCard></ReviewCard>)
+                review.map(a => <ReviewCard review={a}></ReviewCard>)
             }
         </div>
     );

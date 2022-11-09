@@ -1,0 +1,10 @@
+.overlay {
+    width: 100%;
+    overflow-x: hidden;
+    height: 200px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 10px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(247, 60, 104, 0.548), rgba(255, 11, 11, 0.485));
+}
