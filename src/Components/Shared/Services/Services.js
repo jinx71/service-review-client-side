@@ -19,7 +19,7 @@ const Services = () => {
             </div>
             <div className='grid gap-5 cols-1 px-2 md:px-0 md:grid-cols-2 lg:grid-cols-2 container mx-auto mt-20'>
                 {
-                    services.map(service => <ServicesCard service={service}></ServicesCard>)
+                    services?.map(service => <ServicesCard service={service}></ServicesCard>)
                 }
             </div>
             <div className="flex justify-center mt-20">

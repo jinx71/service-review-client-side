@@ -7,9 +7,27 @@ const MyReviews = () => {
     useEffect(() => {
         document.title = `My Reviews : ${document.title}`;
     });
-    const services = useLoaderData()
-    const { user } = useContext(AuthContext)
+    const [services, setServices] = useState([])
+    // const services = useLoaderData()
+    const { user, signout } = useContext(AuthContext)
     // console.log(user.email)
+    useEffect(() => {
+        fetch(`https://travel-guide-server-jinx71.vercel.app/services?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return signout();
+                }
+                return res.json();
+            })
+            .then(data => {
+                setServices(data);
+            })
+    }, [user?.email, signout])
+
     const userReviews = services.map(service => service.review).flat(Infinity)
     // console.log(userReviews)
     let a = false
