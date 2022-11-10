@@ -16,10 +16,10 @@ const Testimonial = () => {
     const userReviews = services.map(service => service.review).flat(Infinity)
     // console.log(userReviews)
     return (
-        <div className='container mx-auto w-full mt-20'>
-            <div className='w-1/2  mx-auto mb-12'>
+        <div className=''>
+            <div className='p-2 mx-auto mb-12'>
                 {/* <h1 className='text-center text-xl text-primary font-bold'>Testimonial</h1> */}
-                <h1 className='text-center text-5xl font-bold mt-5'>What Customer Says</h1>
+                <h1 className='text-center text-5xl font-bold mt-5'>What Our Customer Says</h1>
                 <p className='text-center text-gray-500 capitalize mt-5'>We earn this from their heart with our honest service. It's our asset not revenue.</p>
             </div>
 

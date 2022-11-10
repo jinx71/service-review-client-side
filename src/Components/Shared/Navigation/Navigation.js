@@ -34,7 +34,7 @@ const Navigation = () => {
                     </ul>
                 </div>
 
-                <p className=" normal-case text-5xl heading">Travel With Me </p>
+                <p className="  normal-case text-2xl heading w-full">Travel With Me </p>
             </div>
             <div className="navbar hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

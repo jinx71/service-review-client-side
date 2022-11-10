@@ -44,8 +44,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/my-reviews",
-                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
-                loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/services')
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+                // loader: ({ params }) => fetch('https://travel-guide-server-jinx71.vercel.app/my-reviews')
             },
             {
                 path: "/add-service",

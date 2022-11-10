@@ -12,6 +12,7 @@ const ServiceLayout = () => {
     const location = useLocation()
     console.log(location)
     return (
+        <>
         <Background>
             <Header></Header>
             <div className='container p-2 w-full mx-auto'>
@@ -29,8 +30,10 @@ const ServiceLayout = () => {
                 <Outlet></Outlet>
                 <ServiceSidebar></ServiceSidebar>
             </div>
-            <Footer></Footer>
+            
         </Background >
+        <Footer></Footer>
+        </>
     );
 };
 

@@ -9,7 +9,7 @@ const Background = ({ children }) => {
     return (
         <body className="bg-white dark:bg-black text-black dark:text-white transition-all">
 
-            <div className='max-w-7xl mx-auto'>
+            <div className='max-w-6xl mx-auto'>
                 {children}
             </div>
 

@@ -11,7 +11,7 @@ const ServiceDetails = () => {
     // console.log(abc);
 
     // setServiceDetails(12)
-    console.log(serviceDetails)
+    // console.log(serviceDetails)
     const [reload, setReload] = useState(false)
     const { user } = useContext(AuthContext);
     // console.log(user)
@@ -27,7 +27,7 @@ const ServiceDetails = () => {
         reviewObject["reviewDetails"] = event.target.review.value
         reviewObject["_id"] = serviceDetails._id
         reviewObject["serviceName"] = serviceDetails.serviceName
-        console.log(reviewObject)
+        // console.log(reviewObject)
         fetch('https://travel-guide-server-jinx71.vercel.app/add-review', {
             method: 'POST',
             headers: {
@@ -37,7 +37,7 @@ const ServiceDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data) {
                     setReload(true)
                     toast.success("Review Added Successfully")
@@ -57,13 +57,13 @@ const ServiceDetails = () => {
             })
     }, [reload, serviceDetails._id, setServiceDetails])
     return (
-        <div className='col-span-1 md:col-span-2 lg:col-span-4 mt-20'>
+        <div className='col-span-1 md:col-span-2 lg:col-span-4 mt-20 p-2'>
 
             <div>
                 <img src={serviceDetails?.image} alt="" className='w-full' />
             </div>
             <div>
-                <h1 className="divider text-5xl py-10 text-center">{serviceDetails?.serviceName}</h1>
+                <h1 className=" text-5xl py-10 text-center">{serviceDetails?.serviceName}</h1>
             </div>
             <div className="px-4">
                 <Gallary photos={serviceDetails?.galaryImage}></Gallary>

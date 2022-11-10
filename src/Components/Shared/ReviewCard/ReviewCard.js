@@ -8,7 +8,7 @@ const ReviewCard = ({ review }) => {
     const { user } = useContext(AuthContext)
     const [reviewDetails, setReviewDetails] = useState(review)
     const location = useLocation()
-    console.log(reviewDetails)
+    // console.log(reviewDetails)
     const [reload, setReload] = useState(false)
     const handleDelete = () => {
         // console.log("deleted")
@@ -21,7 +21,7 @@ const ReviewCard = ({ review }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data) {
                     window.location.reload(true)
                     toast.success("Deleted Successfully")
@@ -33,22 +33,19 @@ const ReviewCard = ({ review }) => {
             }
             )
     }
-    const handleedit = (event) => {
+    const handleEdit = (event) => {
         event.preventDefault();
         const reviewObject = {}
-
-        reviewObject["email"] = user.email
-        reviewObject["personalRating"] = event.target.rating.value
-        reviewObject["reviewDetails"] = event.target.review.value
-        reviewObject["serviceName"] = reviewDetails.serviceName
-        console.log(reviewObject)
-        // console.log("deleted")
+        review["reviewDetails"] = document.getElementById("review").value
+        review["personalRating"] = document.getElementById("rating").value
+        // console.log(reviewObject)
+        // // console.log("deleted")
         fetch('https://travel-guide-server-jinx71.vercel.app/edit-review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(reviewObject)
+            body: JSON.stringify(review)
         })
             .then(res => res.json())
             .then(data => {
@@ -66,7 +63,7 @@ const ReviewCard = ({ review }) => {
     }
     return (
         <div>
-            <div className="card border mx-auto mt-10 shadow-xl">
+            <div className="card border mx-auto mt-10 shadow-xl text-black dark:text-white">
                 {
                     review == null ? <div className='text-center text-xl'>No Review Available</div>
                         :
@@ -79,7 +76,7 @@ const ReviewCard = ({ review }) => {
                                         <div>
                                             <div title={reviewDetails?.displayName} className="rounded-full"><img src={reviewDetails?.profileImage} alt="" style={{ width: '100px', height: '100px' }} /></div>
                                         </div>
-                                        <div className="card-title text-black">
+                                        <div className="card-title text-black dark:text-white">
                                             {reviewDetails?.date}<br></br>{reviewDetails?.displayName} <br></br>{reviewDetails?.serviceName ? reviewDetails?.serviceName : null}</div>
                                     </div>
                                     <div className='flex flex-col justify-center items-center'>
@@ -122,17 +119,17 @@ const ReviewCard = ({ review }) => {
                                                     <label className="label">
                                                         <span className="label-text text-xl">Rating</span>
                                                     </label>
-                                                    <input type="number" name="rating" placeholder="Rating" className="input input-bordered" />
+                                                    <input type="number" id="rating" placeholder="Rating" className="input input-bordered" />
                                                 </div>
                                                 <div className="form-control">
                                                     <label className="label">
                                                         <span className="label-text text-xl">Review</span>
                                                     </label>
-                                                    <textarea name="review" className="textarea textarea-bordered h-24" placeholder="Add Something"></textarea>
+                                                    <textarea name="review" id="review" className="textarea textarea-bordered h-24" placeholder="Add Something"></textarea>
                                                 </div>
 
                                                 <div className="form-control mt-2">
-                                                    <button className="btn btn-primary" onClick={handleedit}>Edit Review</button>
+                                                    <button className="btn btn-primary" onClick={handleEdit}>Edit Review</button>
 
                                                 </div>
                                                 <div className="modal-action form-control mt-2">

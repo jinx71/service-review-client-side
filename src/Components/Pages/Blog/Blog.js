@@ -5,7 +5,7 @@ const Blog = () => {
         document.title = `Blog : ${document.title}`;
     });
     return (
-        <div>
+        <div className='pb-20'>
             <div className="card border w-3/4 mx-auto mt-20 shadow-xl">
                 <div className="card-body">
                     <code className="card-title"><span>1.</span>Write down the differences between SQL and NoSQL</code>

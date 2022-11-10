@@ -70,7 +70,7 @@ const AddService = () => {
                 "description": event.target.f4description.value
             }
         ]
-        console.log(service)
+        // console.log(service)
 
 
 

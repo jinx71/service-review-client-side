@@ -8,11 +8,11 @@ import { AuthContext } from '../../../Context/UserContext';
 
 const Login = () => {
     const { user, signin, handleGoogleSignIn } = useContext(AuthContext);
-    console.log(user?.displayName)
+    // console.log(user?.displayName)
     const [error, setError] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
     const from = location.state?.from?.pathname || '/'
 
     const handleSubmit = event => {
@@ -25,7 +25,7 @@ const Login = () => {
         signin(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 form.reset();
                 const currentUser = {
                     email: user.email
@@ -39,8 +39,8 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
-                        console.log(data)
+                        // console.log(data);
+                        // console.log(data)
                         // local storage is the easiest but not the best place to store jwt token
                         localStorage.setItem('travel-token', data.token);
                         navigate(from, { replace: true });
