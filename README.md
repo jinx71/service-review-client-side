@@ -10,4 +10,4 @@ This website is designed for a travel/tourism based service providing business. 
 
 **Stack Info:** React, Daisy UI in Frontend, ExpressJS, MongoDB in Backend.  
 
-#### Live Site Link : https://travelwithme-4c972.firebaseapp.com/
+#### Live Site Link : https://travelwithme-4c972.web.app/
